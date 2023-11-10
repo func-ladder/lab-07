@@ -1,6 +1,6 @@
 ---
 title: "Lab 07 - Modelling course evaluations"
-author: "INSERT NAME HERE"
+author: "Isaac Freer"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -24,15 +24,50 @@ evals<-read.csv("data/evals.csv", row.names=1)
 1.  Visualize the distribution of `score` in the dataframe `evals`.
 
 ```{r viz-score}
-# add code here
+histogram <- 
+    evals %>%
+    ggplot(
+        mapping = aes(
+            x = score
+        )
+    ) +
+    geom_histogram(
+        bins = 30,
+        fill = "pink",
+        colour = "hotpink"
+    )
+
+histogram +
+    labs(
+        x = "Score",
+        y = "Frequency"
+        
+    ) +
+    theme_bw()
 ```
 
-*Add your other details and narratives here.*
+*The histogram has a right skew, which shows that most students rate their course instructors between the 4 and 5 range. Something perhaps expected as students who found the instructor more helpful would more likely stay until the end of the year. Histogram was used.*
 
 2.  Visualize and describe the relationship between `score` and `bty_avg` using `geom_point()` to represent the data. 
 
 ```{r scatterplot}
-# add code here
+
+scatterplot <-
+  evals %>%
+  ggplot(
+    mapping = aes(
+      x = bty_avg,
+      y = score
+    )
+  ) +
+  geom_jitter()
+
+scatterplot +
+  labs(
+    x = "Beauty Avg",
+    y = "Score"
+  )
+  
 ```
 
 *Add your narrative and other details here.*
