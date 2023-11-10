@@ -101,7 +101,7 @@ tidy(score_bty_fit)
 scatterplot +
   geom_smooth(
     method = "lm",
-    se = FALSE,
+    se = FALSE
   )
 
 ```
